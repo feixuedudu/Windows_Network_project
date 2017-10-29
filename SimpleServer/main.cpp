@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	serverAddr.sin_family = AF_INET;
 	//serverAddr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 	serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);
-	serverAddr.sin_port = htons(APP_PORT);
+	serverAddr.sin_port = htons(SERVER_PORT);
 
 	if (SOCKET_ERROR == bind(sServer, (sockaddr*)&serverAddr, sizeof(sockaddr_in)))
 	{

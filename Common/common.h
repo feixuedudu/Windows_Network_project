@@ -8,7 +8,7 @@
 #pragma comment(lib, "ws2_32.lib")
 
 #define SERVER_IP "192.168.123.47"
-#define APP_PORT 5705
+#define SERVER_PORT 5705
 
 #include "../json/include/json.h"
 using namespace std;
