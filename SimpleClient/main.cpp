@@ -4,6 +4,16 @@ using namespace std;
 
 DWORD WINAPI SocketProc(LPVOID lpThreadParameter);
 
+struct Msg
+{
+	int nEvent;
+	char szName[20];
+	int nAge;
+	char szAddr[20];
+	char chSex;
+	double dWages;
+};
+
 // tcp keepalive结构体  
 typedef struct tcp_keepalive
 {
@@ -93,20 +103,31 @@ DWORD WINAPI SocketProc(LPVOID lpThreadParameter)
 
 	char szBuf[1024] = { 0 };
 	int nLen = 0;
+	int i = 1;
 	while (true)
 	{
-		Student stu;
-		string strJson = stu.encode();
-		send(sClient, G2U(strJson.c_str()), 1024, 0);
+		Msg msg;
+		msg.nEvent = 1;
+		msg.nAge = 23;
+		memcpy(msg.szName, "caozhijian_", 20);
+		msg.szName[11] = '0' + i;
+		memcpy(msg.szAddr, "hubeihuangshi", 20);
+		msg.dWages = 1234.4321;
+		msg.chSex = 'M';
+		send(sClient, (const char*)&msg, sizeof(Msg), 0);
 
-		memset(szBuf, 0, 1024);
+		i++;
+
+		Sleep(5000);
+
+		/*memset(szBuf, 0, 1024);
 		recv(sClient, szBuf, 1024, 0);
 		char *p = U2G(szBuf);
 		cout << "recv: " << p << endl;
 		Student stu1;
 		stu1.decode(p);
 		cout << stu1.strName << " " << stu1.nAge << " " << stu1.strSex << " " << stu1.strAddr << " " << stu1.dWages << endl;
-
+*/
 		/*char szBuf1[1024] = "caozhijian";
 		char szBuf2[1024] = "曹志坚";
 		char szBuf3[1024] = "zjian.曹志坚@qq.com";
