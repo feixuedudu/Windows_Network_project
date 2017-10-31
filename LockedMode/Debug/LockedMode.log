@@ -1,4 +1,0 @@
-﻿  main.cpp
-d:\project\windows_network_project\lockedmode\main.cpp(25): warning C4244: “=”: 从“u_long”转换到“USHORT”，可能丢失数据
-  LockedMode.vcxproj -> D:\project\Windows_Network_project\Debug\LockedMode.exe
-  LockedMode.vcxproj -> D:\project\Windows_Network_project\Debug\LockedMode.pdb (Full PDB)
