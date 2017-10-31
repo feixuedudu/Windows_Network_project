@@ -4,16 +4,6 @@ using namespace std;
 
 DWORD WINAPI SocketProc(LPVOID lpThreadParameter);
 
-struct Msg
-{
-	int nEvent;
-	char szName[20];
-	int nAge;
-	char szAddr[20];
-	char chSex;
-	double dWages;
-};
-
 // tcp keepalive½á¹¹Ìå  
 typedef struct tcp_keepalive
 {
@@ -114,11 +104,12 @@ DWORD WINAPI SocketProc(LPVOID lpThreadParameter)
 		memcpy(msg.szAddr, "hubeihuangshi", 20);
 		msg.dWages = 1234.4321;
 		msg.chSex = 'M';
-		send(sClient, (const char*)&msg, sizeof(Msg), 0);
+		memcpy(szBuf, &msg, sizeof(Msg));
+		send(sClient, szBuf, 1024, 0);
 
 		i++;
 
-		Sleep(5000);
+		Sleep(50);
 
 		/*memset(szBuf, 0, 1024);
 		recv(sClient, szBuf, 1024, 0);
