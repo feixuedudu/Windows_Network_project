@@ -58,9 +58,9 @@ int main(int argc, char *argv[])
 		memset(&clientAddr, 0, sizeof(clientAddr));
 		if (INVALID_SOCKET == (sClient = accept(sListen, (sockaddr*)&clientAddr, &nAddrLen)))
 		{
-			EnterCriticalSection(&g_csout);
+			//EnterCriticalSection(&g_csout);
 			cout << "accept() failed with error " << WSAGetLastError() << endl;
-			LeaveCriticalSection(&g_csout);
+			//LeaveCriticalSection(&g_csout);
 			closesocket(sListen);
 			WSACleanup();
 			return -1;

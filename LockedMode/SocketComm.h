@@ -23,7 +23,8 @@ private:
 	char m_szBuff[1024];
 	SOCKET m_sSocket;
 	CRITICAL_SECTION m_csBuff;
-	HANDLE m_hEventBuff;
+	HANDLE m_hBuffEmpty;
+	HANDLE m_hBuffFull;
 	SOCKADDR_IN m_sockAddr;
 	bool m_bRunning;
 	/*HANDLE m_hRecvDataThread;
